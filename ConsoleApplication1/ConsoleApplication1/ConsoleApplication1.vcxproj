@@ -126,12 +126,14 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="Electronic_Device.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="Office_Supply.cpp" />
     <ClCompile Include="Product.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
     <ClInclude Include="Electronic_Device.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="Office_Supply.h" />
     <ClInclude Include="Product.h" />
   </ItemGroup>

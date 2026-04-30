@@ -37,3 +37,38 @@ void Electronic_Device::display()
 	cout << "warranty: " << warranty << endl;
 	cout << "----------------------" << endl;
 }
+
+ void Electronic_Device::save(std::ofstream& out)
+{
+	out << "Electronic Device" << endl;
+	out << productID << endl;
+	out << name << endl;
+	out << price << endl;
+	out << available_quantity << endl;
+	out << brand << endl;
+	out << warranty << endl;
+ }
+
+ int Electronic_Device::operator+(Electronic_Device E)
+ {
+	 return this->available_quantity + E.available_quantity;
+ }
+
+ bool Electronic_Device::operator==(Electronic_Device E)
+ {
+	if (this->price == E.price)
+		return true;
+	else
+		return false;
+ }
+
+ ostream& operator<<(ostream& out, Electronic_Device E)
+ {
+	 out << "Id: " << E.productID << endl;
+	 out << "Name: " << E.name << endl;
+	 out << "Price: " << E.price << endl;
+	 out << "Quantity: " << E.available_quantity << endl;
+	 out << "Brand: " << E.brand << endl;
+	 out << "Warranty: " << E.warranty << endl;
+	 return out;
+ }

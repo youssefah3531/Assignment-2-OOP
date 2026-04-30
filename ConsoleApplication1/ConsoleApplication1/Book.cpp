@@ -35,15 +35,43 @@ void Book::display()
 	cout << "Id: " << productID<<endl;
 	cout << "Name: " << name << endl;
 	cout << "Price: " << price << endl;
+	cout << "Quantity: " << available_quantity << endl;
 	cout << "Author: " << author << endl;
 	cout << "Number of pages is: " << pages_number << endl;
 	cout << "----------------------" << endl;
 }
 
+void Book::save(std::ofstream& out)
+{
+	out << "Book" << endl;
+	out << productID << endl;
+	out << name << endl;
+	out << price << endl;
+	out << available_quantity << endl;
+	out << author << endl;
+	out << pages_number << endl;
+}
 
+int Book::operator+(Book B)
+{
+	return this->available_quantity + B.available_quantity;
+}
 
+bool Book::operator==(Book B)
+{
+	if (this->price == B.price)
+		return true;
+	else
+		return false;
+}
 
-
-
-
-
+ostream& operator<<(ostream& out, Book B)
+{
+	out << "Id: " << B.productID << endl;
+	out << "Name: " << B.name << endl;
+	out << "Price: " << B.price << endl;
+	out << "Quantity: " << B.available_quantity << endl;
+	out << "Author: " << B.author << endl;
+	out << "Number of pages is: " << B.pages_number << endl;
+	return out;
+}
