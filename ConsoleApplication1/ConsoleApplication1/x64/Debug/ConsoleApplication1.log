@@ -1,2 +1,6 @@
 ﻿  ConsoleApplication1.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(137,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(140,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Store.cpp
+  Generating Code...
   ConsoleApplication1.vcxproj -> D:\Assignment-2-OOP\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

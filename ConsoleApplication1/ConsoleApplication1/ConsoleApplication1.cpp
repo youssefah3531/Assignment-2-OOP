@@ -7,14 +7,15 @@
 #include <vector>
 #include "Templates.h"
 #include "File.h"
-
+#include "Store.h"
 using namespace std;
 
 int main()
 {
     int mainchoice;
-
+    Store st;
     vector<Product*> products;
+    
     try {
         loadFromFile(products);
     }
@@ -55,6 +56,7 @@ int main()
                         throw runtime_error("Invalid product type");
                 p->add_product();
                 products.push_back(p);
+                st.addProduct(p);
                 break;
             }
 

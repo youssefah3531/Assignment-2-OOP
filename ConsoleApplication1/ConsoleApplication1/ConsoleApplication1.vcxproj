@@ -125,17 +125,23 @@
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Electronic_Device.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Office_Supply.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="Store.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="Electronic_Device.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Office_Supply.h" />
+    <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="Store.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

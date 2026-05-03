@@ -14,8 +14,8 @@ protected:
 public:
 	Product();
 	Product(int id,string name,int price);
-	virtual void add_product() =0;
-	virtual void display() = 0;
+	virtual void add_product()=0;
+	virtual void display() =0;
 	void set_id(int id);
 	void set_name(string n);
 	void set_price(int p);
