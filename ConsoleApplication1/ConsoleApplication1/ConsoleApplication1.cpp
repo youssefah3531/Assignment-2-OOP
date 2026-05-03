@@ -1,4 +1,5 @@
 ﻿#include "Product.h"
+#include "Customer.h"
 #include "Electronic_Device.h"
 #include "Office_Supply.h"
 #include "Book.h"
@@ -8,6 +9,8 @@
 #include "Templates.h"
 #include "File.h"
 #include "Store.h"
+#include "RegularCustomer.h"
+#include "PremiumCustomer.h"
 using namespace std;
 
 int main()
@@ -15,12 +18,11 @@ int main()
     int mainchoice;
     Store st;
     vector<Product*> products;
-    
     try {
         loadFromFile(products);
     }
     catch (exception& e) {
-		cout << "Error loading products: " << e.what() << endl;
+        cout << "Error loading products: " << e.what() << endl;
     }
 
     cout << "What do you want to do" << endl;
@@ -30,7 +32,7 @@ int main()
 
         try
         {
-            cout << "1- Add Product\n2- Display product details\n3- Buy Product\n4- Find Max Price Product\n5- Swap Products\n0- Exit" << endl;
+            cout << "1- Add Product\n2- Display product details\n3- Buy Product\n4- Find Max Price Product\n5- Swap Products\n6- Add Customer\n0- Exit" << endl;
             if (!(cin >> mainchoice))
                 throw runtime_error("Invalid input");
 
@@ -46,14 +48,14 @@ int main()
 
                 Product* p = nullptr;
 
-                    if (choice == 1)
-                        p = new Book();
-                    else if (choice == 2)
-                        p = new Electronic_Device();
-                    else if (choice == 3)
-                        p = new Office_Supply();
-                    else
-                        throw runtime_error("Invalid product type");
+                if (choice == 1)
+                    p = new Book();
+                else if (choice == 2)
+                    p = new Electronic_Device();
+                else if (choice == 3)
+                    p = new Office_Supply();
+                else
+                    throw runtime_error("Invalid product type");
                 p->add_product();
                 products.push_back(p);
                 st.addProduct(p);
@@ -96,7 +98,7 @@ int main()
                             throw runtime_error("Quantity must be positive");
                         if (q > p->get_quantity())
                             throw runtime_error("Not enough quantity");
-                        p->set_new_quantity( q);
+                        p->set_new_quantity(q);
                         cout << "Purchased successfully\n";
                         break;
                     }
@@ -148,7 +150,51 @@ int main()
                 cout << "Products swapped successfully\n";
                 break;
             }
-
+            case 6:
+            {
+                int custchoice;
+                int custid;
+                string custphone;
+                string custname;
+                Store customer;
+                cout << "1- Regular Customer\n2-Premium Customer: " << endl;
+                do {
+                    cin >> custchoice;
+                    if (custchoice == 1)
+                    {
+                        Customer* regular = new RegularCustomer();
+                        cout << "Enter your id: " << endl;
+                        cin >> custid;
+                        regular->setCustomerId(custid);
+                        cout << "Enter your name: " << endl;
+                        cin >> custname;
+                        regular->setCustomerName(custname);
+                        cout << "Enter you Phone number: " << endl;
+                        cin >> custphone;
+                        regular->setCustomerPhone(custphone);
+                        customer.addCustomer(regular);
+                    }
+                    else if (custchoice == 2)
+                    {
+                        Customer* premium = new PremiumCustomer();
+                        cout << "Enter your id: " << endl;
+                        cin >> custid;
+                        premium->setCustomerId(custid);
+                        cout << "Enter your name: " << endl;
+                        cin >> custname;
+                        premium->setCustomerName(custname);
+                        cout << "Enter you Phone number: " << endl;
+                        cin >> custphone;
+                        premium->setCustomerPhone(custphone);
+                        customer.addCustomer(premium);
+                    }
+                    else
+                    {
+                        cout << "Invalid Choice" << endl;
+                    }
+                } while (custchoice != 1 && custchoice != 2);
+                break;
+            }
             case 0:
             {
                 cout << "Exiting...\n";
@@ -169,15 +215,15 @@ int main()
 
     } while (mainchoice != 0);
 
-    
+
     try {
-    saveToFile(products);
+        saveToFile(products);
     }
     catch (exception& e) {
         cout << "Error saving products: " << e.what() << endl;
-	}
+    }
 
     for (auto p : products)
-		delete p;
+        delete p;
     return 0;
 }

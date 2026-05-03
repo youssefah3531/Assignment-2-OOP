@@ -4,6 +4,9 @@
 #include <string>
 #include "Product.h"
 #include "Customer.h"
+#include "Payment.h"
+#include "Delivery.h"
+#include "OrderItem.h"
 using namespace std;
 
 class Order

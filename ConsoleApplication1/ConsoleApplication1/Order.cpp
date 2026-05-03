@@ -1,5 +1,9 @@
 #include "Order.h"
-
+#include "Delivery.h"
+#include "Payment.h"
+#include "CardPayment.h"
+#include "CashPayment.h"
+#include "OrderItem.h"
 int Order::getOrderId()
 {
     return orderId;

@@ -124,12 +124,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
+    <ClCompile Include="CardPayment.cpp" />
+    <ClCompile Include="CashPayment.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="Customer.cpp" />
+    <ClCompile Include="Delivery.cpp" />
     <ClCompile Include="Electronic_Device.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Office_Supply.cpp" />
     <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OrderItem.cpp" />
+    <ClCompile Include="Payment.cpp" />
     <ClCompile Include="PremiumCustomer.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="RegularCustomer.cpp" />
@@ -137,11 +142,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="CardPayment.h" />
+    <ClInclude Include="CashPayment.h" />
     <ClInclude Include="Customer.h" />
+    <ClInclude Include="Delivery.h" />
     <ClInclude Include="Electronic_Device.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Office_Supply.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderItem.h" />
+    <ClInclude Include="Payment.h" />
     <ClInclude Include="PremiumCustomer.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="RegularCustomer.h" />

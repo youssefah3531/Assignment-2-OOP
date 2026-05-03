@@ -1,6 +1,98 @@
-﻿  ConsoleApplication1.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(137,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(140,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+﻿  CardPayment.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
+  (compiling source file 'CardPayment.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
+      see declaration of 'Payment'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(4,27): error C2504: 'Payment': base class undefined
+  (compiling source file 'CardPayment.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(10,7): error C3668: 'CardPayment::pay': method with override specifier 'override' did not override any base class methods
+  (compiling source file 'CardPayment.cpp')
+  
+  CashPayment.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
+  (compiling source file 'CashPayment.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
+      see declaration of 'Payment'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(3,27): error C2504: 'Payment': base class undefined
+  (compiling source file 'CashPayment.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(6,7): error C3668: 'CashPayment::pay': method with override specifier 'override' did not override any base class methods
+  (compiling source file 'CashPayment.cpp')
+  
+  ConsoleApplication1.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(139,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(142,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Delivery.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7): error C2011: 'Delivery': 'class' type redefinition
+  (compiling source file 'Delivery.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(3,16): error C2027: use of undefined type 'Delivery'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+  Order.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7): error C2011: 'Delivery': 'class' type redefinition
+  (compiling source file 'Order.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
+  (compiling source file 'Order.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
+      see declaration of 'Payment'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(4,27): error C2504: 'Payment': base class undefined
+  (compiling source file 'Order.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(10,7): error C3668: 'CardPayment::pay': method with override specifier 'override' did not override any base class methods
+  (compiling source file 'Order.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(3,27): error C2504: 'Payment': base class undefined
+  (compiling source file 'Order.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(6,7): error C3668: 'CashPayment::pay': method with override specifier 'override' did not override any base class methods
+  (compiling source file 'Order.cpp')
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(38,36): error C2661: 'OrderItem::OrderItem': no overloaded function takes 2 arguments
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(38,36):
+      while trying to match the argument list '(Product *, int)'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(54,18): error C2027: use of undefined type 'Delivery'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(72,15): error C2039: 'displayItem': is not a member of 'OrderItem'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
+      see declaration of 'OrderItem'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(76,35): error C2027: use of undefined type 'Delivery'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(80,9): error C2027: use of undefined type 'Payment'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
+      see declaration of 'Payment'
+  
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(83,9): error C2027: use of undefined type 'Delivery'
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
+      see declaration of 'Delivery'
+  
+  OrderItem.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7): error C2011: 'OrderItem': 'class' type redefinition
+  (compiling source file 'OrderItem.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
+      see declaration of 'OrderItem'
+  
+  Payment.cpp
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
+  (compiling source file 'Payment.cpp')
+      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
+      see declaration of 'Payment'
+  
   Store.cpp
   Generating Code...
-  ConsoleApplication1.vcxproj -> D:\Assignment-2-OOP\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

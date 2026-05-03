@@ -9,6 +9,9 @@ private:
 	string name;
 	string phone;
 public:
+	void setCustomerId(int i);
+	void setCustomerName(string n);
+	void setCustomerPhone(string p);
 	int getCustomerId();
 	string getName();
 	string getPhone();
