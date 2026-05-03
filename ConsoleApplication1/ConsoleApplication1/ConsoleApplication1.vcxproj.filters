@@ -42,6 +42,12 @@
     <ClCompile Include="Order.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PremiumCustomer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegularCustomer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Product.h">
@@ -66,6 +72,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Order.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PremiumCustomer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegularCustomer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

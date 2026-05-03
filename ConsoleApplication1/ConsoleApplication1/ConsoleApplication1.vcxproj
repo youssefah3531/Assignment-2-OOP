@@ -130,7 +130,9 @@
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Office_Supply.cpp" />
     <ClCompile Include="Order.cpp" />
+    <ClCompile Include="PremiumCustomer.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="RegularCustomer.cpp" />
     <ClCompile Include="Store.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +142,9 @@
     <ClInclude Include="File.h" />
     <ClInclude Include="Office_Supply.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="PremiumCustomer.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="RegularCustomer.h" />
     <ClInclude Include="Store.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
