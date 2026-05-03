@@ -4,6 +4,7 @@
 #include "CardPayment.h"
 #include "CashPayment.h"
 #include "OrderItem.h"
+#include "Product.h"
 int Order::getOrderId()
 {
     return orderId;
@@ -36,10 +37,12 @@ Delivery* Order::getDelivery()
 
 void Order::addItem(Product* product, int quantity)
 {
-    OrderItem* item = new OrderItem(product, quantity);
+    OrderItem* item = new OrderItem();
+    item->setProduct(product);
+    item->setquantity(quantity);
+    item->setUnitPrice(product->get_price());
     items.push_back(item);
 }
-
 double Order::calculateSubtotal()
 {
     double total = 0;

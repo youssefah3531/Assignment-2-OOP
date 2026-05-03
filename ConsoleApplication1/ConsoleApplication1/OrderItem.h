@@ -9,6 +9,9 @@ private:
 	int quantity;
 	double unitPriceAtPurchase;
 public:
+	void setProduct(Product * p);
+	void setquantity(int q);
+	void setUnitPrice(double price);
 	int calculateItemTotal();
 };
 
