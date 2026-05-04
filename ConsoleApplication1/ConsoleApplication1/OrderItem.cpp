@@ -1,5 +1,5 @@
 #include "OrderItem.h"
-
+#include "Product.h"
 void OrderItem::setProduct(Product * p)
 {
 	product = p;
@@ -7,7 +7,13 @@ void OrderItem::setProduct(Product * p)
 
 void OrderItem::setquantity(int q)
 {
-	quantity = q;
+    if (product != nullptr) {
+        int currentQty = product->get_quantity();
+        product->set_quantity(currentQty - q);
+        quantity = q;
+    } else {
+        quantity = 0;
+    }
 }
 
 void OrderItem::setUnitPrice(double price)

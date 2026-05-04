@@ -18,7 +18,6 @@
 #include "CashPayment.h"
 #include "OrderItem.h"
 using namespace std;
-
 int main()
 {
     Store st;
@@ -38,15 +37,14 @@ int main()
     }
 
     int choice;
-    cout << "\n===== Welcome to Smart Store =====" << endl;
+    cout << "\nWelcome to Smart Store" << endl;
     cout << "What do you want to do" << endl;
 
     do
     {
-
         try
         {
-            cout << "1- Add Product\n2- Display product details\n3- Buy Product\n4- Find Max Price Product\n5- Swap Products\n6- Add Customer\n7- Create Order & Print Invoice\n8- Display Total Product Count\n0- Exit" << endl;
+            cout << "1- Add Product\n2- Display product details\n3- Find Max Price Product\n4- Swap Products\n5- Add Customer\n6- Create Order & Print Invoice\n7- Display Total Product Count\n8- Compare Price\n0- Exit" << endl;
             if (!(cin >> choice))
                 throw runtime_error("Invalid input");
 
@@ -73,6 +71,7 @@ int main()
                 p->add_product();
                 products.push_back(p);
                 st.addProduct(p);
+                saveToFile(products);
                 cout << "Product added successfully." << endl;
                 break;
             }
@@ -90,44 +89,10 @@ int main()
                 break;
             }
 
-
             case 3:
             {
-
                 if (products.empty())
                     throw runtime_error("No products available");
-                for (auto p : products)
-                    p->display();
-                int id, qty;
-                cout << "Enter product ID: ";
-                if (!(cin >> id))
-                    throw runtime_error("Invalid ID");
-                bool found = false;
-                for (auto p : products) {
-                    if (p->get_id() == id) {
-                        found = true;
-                        cout << "Enter quantity to buy: ";
-                        if (!(cin >> qty))
-                            throw runtime_error("Invalid quantity");
-                        if (qty <= 0)
-                            throw runtime_error("Quantity must be positive");
-                        if (qty > p->get_quantity())
-                            throw runtime_error("Not enough quantity");
-                        p->set_new_quantity(qty);
-                        cout << "Purchased successfully. Remaining stock: " << p->get_quantity() << endl;
-                        break;
-                    }
-                }
-                if (!found)
-                    throw runtime_error("Product not found");
-                break;
-            }
-
-            case 4:
-            {
-                if (products.empty())
-                    throw runtime_error("No products available");
-
 
                 Product* maxProduct = findMaxPrice(products);
 
@@ -137,7 +102,7 @@ int main()
                 break;
             }
 
-            case 5:
+            case 4:
             {
                 if (products.size() < 2)
                     throw runtime_error("Need at least 2 products to swap");
@@ -170,7 +135,8 @@ int main()
                 for (auto p : products) p->display();
                 break;
             }
-            case 6:
+
+            case 5:
             {
                 int type;
                 cout << "1- Regular Customer\n2-Premium Customer: " << endl;
@@ -187,38 +153,39 @@ int main()
                 int id; string name, phone;
                 cout << "Enter Customer ID: ";
                 cin >> id;
-                cout << "Enter Name: ";        
+                cout << "Enter Name: ";
                 cin >> name;
-                cout << "Enter Phone: ";       
+                cout << "Enter Phone: ";
                 cin >> phone;
 
                 Customer* c = nullptr;
-                    if (type == 1)
-                    {
-                        c = new RegularCustomer();
-                        c->setCustomerId(id);
-                        c->setCustomerName(name);
-                        c->setCustomerPhone(phone);
-                        cout << "Regular customer added." << endl;
-                    }
-                    else
-                    {
-                        double rate;
-                        cout << "Enter Discount Rate (0.0 - 1.0): "; cin >> rate;
-                        PremiumCustomer* pc = new PremiumCustomer();
-                        pc->setCustomerId(id);
-                        pc->setCustomerName(name);
-                        pc->setCustomerPhone(phone);
-                        pc->setDiscountRate(rate);
-                        c = pc;
-                        cout << "Premium customer added." << endl;
-                    }
-                    customers.push_back(c);
-                    st.addCustomer(c);
-                    c->displayInfo();
-                    break;
+                if (type == 1)
+                {
+                    c = new RegularCustomer();
+                    c->setCustomerId(id);
+                    c->setCustomerName(name);
+                    c->setCustomerPhone(phone);
+                    cout << "Regular customer added." << endl;
+                }
+                else
+                {
+                    double rate;
+                    cout << "Enter Discount Rate (0.0 - 1.0): "; cin >> rate;
+                    PremiumCustomer* pc = new PremiumCustomer();
+                    pc->setCustomerId(id);
+                    pc->setCustomerName(name);
+                    pc->setCustomerPhone(phone);
+                    pc->setDiscountRate(rate);
+                    c = pc;
+                    cout << "Premium customer added." << endl;
+                }
+                customers.push_back(c);
+                st.addCustomer(c);
+                c->displayInfo();
+                break;
             }
-            case 7:
+
+            case 6:
             {
                 if (products.empty())
                     throw runtime_error("No products available to order");
@@ -235,12 +202,9 @@ int main()
                 if (!(cin >> custIdx) || custIdx < 1 || (size_t)custIdx > customers.size())
                     throw runtime_error("Invalid customer selection");
                 Customer* cust = customers[custIdx - 1];
-
-                // Create order
                 Order* order = new Order(orderCounter++, "2026-05-04", "Confirmed", cust);
-
-                // Add items
-                for (auto p : products) p->display();
+                for (auto p : products)
+                    p->display();
                 int more = 1;
                 while (more == 1) {
                     int pid, qty;
@@ -248,7 +212,6 @@ int main()
                     if (!(cin >> pid)) throw runtime_error("Invalid ID");
                     cout << "Enter quantity: ";
                     if (!(cin >> qty)) throw runtime_error("Invalid quantity");
-
                     bool found = false;
                     for (auto p : products) {
                         if (p->get_id() == pid) {
@@ -267,8 +230,6 @@ int main()
                     cout << "Add another item? 1-Yes  0-No: ";
                     cin >> more;
                 }
-
-                // Payment
                 int payType;
                 cout << "Payment method:\n1- Cash\n2- Card\nChoice: ";
                 if (!(cin >> payType)) throw runtime_error("Invalid payment choice");
@@ -276,7 +237,7 @@ int main()
                 Payment* pay = nullptr;
                 if (payType == 2) {
                     string cardNum;
-                    cout << "Enter 16-digit card number: "; 
+                    cout << "Enter 16-digit card number: ";
                     cin >> cardNum;
                     CardPayment* cp = new CardPayment();
                     cp->setCardNumber(cardNum);
@@ -286,8 +247,6 @@ int main()
                     pay = new CashPayment();
                 }
                 order->setPayment(pay);
-
-                // Delivery
                 int hasDelivery;
                 cout << "Delivery:\n1- Shipped (with delivery fee)\n0- Pickup (no fee)\nChoice: ";
                 cin >> hasDelivery;
@@ -295,9 +254,9 @@ int main()
                     string addr, driver; double fee;
                     cout << "Delivery Address: ";
                     cin >> addr;
-                    cout << "Delivery Fee: ";    
+                    cout << "Delivery Fee: ";
                     cin >> fee;
-                    cout << "Driver Name: ";     
+                    cout << "Driver Name: ";
                     cin >> driver;
                     try {
                         Delivery* del = new Delivery(1, addr, fee, driver);
@@ -311,16 +270,58 @@ int main()
                 order->printInvoice();
                 st.addOrder(order);
                 orders.push_back(order);
+                saveToFile(products);
                 break;
             }
-            case 8:
+
+            case 7:
             {
                 cout << "Total Product objects created: " << Product::getProductCount() << endl;
                 break;
             }
+
+            case 8:
+            {
+                int comp_a;
+                int comp_b;
+                if (products.empty()) {
+                    cout << "No products available\n";
+                    break;
+                }
+                for (auto p : products)
+                {
+                    p->display();
+                }
+                cout << "Enter the First Product Id: " << endl;
+                cin >> comp_a;
+                cout << "Enter the Secound Product Id: " << endl;
+                cin >> comp_b;
+
+                Product* a = nullptr;
+                Product* b = nullptr;
+
+                for (size_t i = 0; i < products.size(); i++)
+                {
+                    if (products[i]->get_id() == comp_a)
+                    {
+                        a = products[i];
+                    }
+                    else if (products[i]->get_id() == comp_b)
+                    {
+                        b = products[i];
+                    }
+                    if (a != nullptr && b != nullptr)
+                    {
+                        compareByPrice(a, b);
+                        break;
+                    }
+                }
+                break;
+            }
+
             case 0:
             {
-                cout << "Saving data..." << endl;
+                cout << "Saving data" << endl;
                 try {
                     saveToFile(products);
                     cout << "Products saved successfully." << endl;
@@ -344,12 +345,12 @@ int main()
             cin.clear();
             cin.ignore(1000, '\n');
         }
-
     } while (choice != 0);
 
-
-    for (auto o : orders)   delete o;
-    for (auto c : customers) delete c;
-    for (auto p : products)  delete p;
-    return 0;
+    for (auto o : orders)
+        delete o;
+    for (auto c : customers)
+        delete c;
+    for (auto p : products)
+        delete p;
 }

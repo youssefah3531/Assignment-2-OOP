@@ -1,7 +1,14 @@
 Book
 1
-asd1
-1
-1
-das
-5
+OOP
+70
+7
+joe
+700
+Electronic Device
+2
+lab
+30000
+4
+hp
+50

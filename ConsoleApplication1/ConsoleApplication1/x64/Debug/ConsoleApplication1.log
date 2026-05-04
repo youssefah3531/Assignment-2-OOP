@@ -1,21 +1,2 @@
-﻿  Book.cpp
-  CardPayment.cpp
-  CashPayment.cpp
-  ConsoleApplication1.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(158,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(161,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Customer.cpp
-  Delivery.cpp
-  Electronic_Device.cpp
-  File.cpp
-  Office_Supply.cpp
-  Order.cpp
-  OrderItem.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.cpp(20,17): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  Payment.cpp
-  PremiumCustomer.cpp
-  Product.cpp
-  RegularCustomer.cpp
-  Store.cpp
-  Generating Code...
+﻿  Product.cpp
   ConsoleApplication1.vcxproj -> D:\Assignment-2-OOP\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe

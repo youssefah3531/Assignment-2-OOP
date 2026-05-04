@@ -84,17 +84,17 @@ int Product::getProductCount()
 Product* compareByPrice(Product* a, Product* b)
 {
 	if (a->price > b->price) {
-		cout << a->name << " (Price: " << a->price << ") is more expensive than "
-			<< b->name << " (Price: " << b->price << ")" << endl;
+		cout << a->name << " Price: " << a->price << " is more expensive than "
+			<< b->name << " Price: " << b->price << "" << endl;
 		return a;
 	}
 	else if (b->price > a->price) {
-		cout << b->name << " (Price: " << b->price << ") is more expensive than "
-			<< a->name << " (Price: " << a->price << ")" << endl;
+		cout << b->name << " Price: " << b->price << " is more expensive than "
+			<< a->name << " Price: " << a->price << "" << endl;
 		return b;
 	}
 	else {
-		cout << a->name << " and " << b->name << " have the same price (" << a->price << ")" << endl;
+		cout << a->name << " and " << b->name << " have the same price " << a->price << "" << endl;
 		return a;
 	}
 }

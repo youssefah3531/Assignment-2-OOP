@@ -5,9 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
 using namespace std;
-
 static bool tryParseInt(const string& s, int& out)
 {
     try
