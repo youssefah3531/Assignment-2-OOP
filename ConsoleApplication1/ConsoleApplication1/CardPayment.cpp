@@ -1,26 +1,23 @@
 #include "CardPayment.h"
 
+void CardPayment::setCardNumber(string num)
+{
+	cardNumber = num;
+}
+
 bool CardPayment::validateCard()
 {
-	cin >> cardNumber;
-	if (cardNumber.size()>15)
-	{
-		return true;
-	}
-	else
-	{
+	if (cardNumber.size() != 16)
 		return false;
-	}
+	for (char c : cardNumber)
+		if (!isdigit(c))
+			return false;
+	return true;
 }
 
 void CardPayment::pay()
 {
-	if (validateCard)
-	{
-		cout << "Successful Payment"<<endl;
-	}
-	else
-	{
-		cout << "Invaild Card" << endl;
-	}
+	if (!validateCard())
+        throw invalid_argument("Invalid card number. Must be exactly 16 digits.");
+    cout << "Card Payment successful. Card: ****" << cardNumber.substr(12) << endl;
 }

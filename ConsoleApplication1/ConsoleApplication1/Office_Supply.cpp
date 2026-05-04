@@ -1,4 +1,5 @@
 #include "Office_Supply.h"
+#include <stdexcept>
 
 Office_Supply::Office_Supply()
 {
@@ -16,10 +17,16 @@ void Office_Supply::add_product()
 	cin >> productID;
 	cout << "Enter the name Supply" << endl;
 	cin >> name;
+	int p;
 	cout << "Enter the Price" << endl;
-	cin >> price;
+	cin >> p;
+	if (p < 0) throw invalid_argument("Price cannot be negative");
+	price = p;
+	int q;
 	cout << "Enter the quantity of this Item" << endl;
-	cin >> available_quantity;
+	cin >> q;
+	if (q < 0) throw invalid_argument("Quantity cannot be negative");
+	available_quantity = q;
 	cout << "Enter the Category" << endl;
 	cin >> category;
 	cout << "Enter the material" << endl;
@@ -29,6 +36,7 @@ void Office_Supply::add_product()
 void Office_Supply::display()
 {
 	cout << "----------------------" << endl;
+	cout << "Type: Office Supply" << endl;
 	cout << "Id: " << productID << endl;
 	cout << "Name: " << name << endl;
 	cout << "Price: " << price << endl;
@@ -56,10 +64,7 @@ int Office_Supply::operator+(Office_Supply O)
 
 bool Office_Supply::operator==(Office_Supply O)
 {
-	if (this->price == O.price)
-		return true;
-	else
-		return false;
+	return this->price == O.price;
 }
 
 ostream& operator<<(ostream& out, Office_Supply O)

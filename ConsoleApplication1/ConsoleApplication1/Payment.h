@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "Order.h"
 using namespace std;
@@ -8,6 +9,6 @@ private:
 	double amount;
 public:
 	virtual void pay() = 0;
-
+	virtual ~Payment() = default;
 };
 

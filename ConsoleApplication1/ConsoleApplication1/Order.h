@@ -8,6 +8,11 @@
 #include "Delivery.h"
 #include "OrderItem.h"
 using namespace std;
+class Customer;
+class Payment;
+class Delivery;
+class OrderItem;
+class Product;
 class Order
 {
 private:
@@ -19,12 +24,14 @@ private:
     Delivery* delivery;
     vector<OrderItem*> items;
 public:
+    Order(int id, string date, string status, Customer* c);
+    ~Order();
+    void setPayment(Payment* p);
+    void setDelivery(Delivery* d);
     int getOrderId();
     string getOrderDate();
     string getStatus();
     Customer* getCustomer();
-    Payment* getPayment();
-    Delivery* getDelivery();
     void addItem(Product* product, int quantity);
     double calculateSubtotal();
     double calculateFinalTotal();

@@ -6,6 +6,7 @@ class CardPayment :public Payment
 private:
 	string cardNumber;
 public:
+	void setCardNumber(string num);
 	bool validateCard();
 	void pay() override;
 };

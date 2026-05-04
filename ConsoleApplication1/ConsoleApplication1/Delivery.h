@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "Order.h"
 #include <string>
@@ -10,6 +11,8 @@ private:
 	double deliveryFee;
 	string driverName;
 public:
+	Delivery(int id, string addr, double fee, string driver);
 	void displayDeliveryInfo();
+	double getDeliveryFee();
 };
 

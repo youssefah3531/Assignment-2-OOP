@@ -1,4 +1,5 @@
 #include "Electronic_Device.h"
+#include <stdexcept>
 
 Electronic_Device::Electronic_Device()
 {
@@ -16,10 +17,16 @@ void Electronic_Device::add_product()
 	cin >> productID;
 	cout << "Enter the name of the electronic device" << endl;
 	cin >> name;
+	int p;
 	cout << "Enter the Price" << endl;
-	cin >> price;
+	cin >> p;
+	if (p < 0) throw invalid_argument("Price cannot be negative");
+	price = p;
+	int q;
 	cout << "Enter the quantity of this Item" << endl;
-	cin >> available_quantity;
+	cin >> q;
+	if (q < 0) throw invalid_argument("Quantity cannot be negative");
+	available_quantity = q;
 	cout << "Enter the brand name" << endl;
 	cin >> brand;
 	cout << "Enter the warranty period" << endl;
@@ -29,6 +36,7 @@ void Electronic_Device::add_product()
 void Electronic_Device::display()
 {
 	cout << "----------------------" << endl;
+	cout << "Type: Electronic Device" << endl;
 	cout << "Id: " << productID << endl;
 	cout << "Name: " << name << endl;
 	cout << "Price: " << price << endl;
@@ -56,10 +64,7 @@ void Electronic_Device::display()
 
  bool Electronic_Device::operator==(Electronic_Device E)
  {
-	if (this->price == E.price)
-		return true;
-	else
-		return false;
+	 return this->price == E.price;
  }
 
  ostream& operator<<(ostream& out, Electronic_Device E)

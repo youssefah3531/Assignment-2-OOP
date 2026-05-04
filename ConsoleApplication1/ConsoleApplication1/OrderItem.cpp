@@ -19,3 +19,12 @@ int OrderItem::calculateItemTotal()
 {
 	return quantity*unitPriceAtPurchase;
 }
+
+void OrderItem::displayItem()
+{
+	if (product != nullptr)
+		cout << "  - " << product->get_name()
+		<< " | Quantity: " << quantity
+		<< " | Unit Price: " << unitPriceAtPurchase << " EGP"
+		<< " | Total: " << calculateItemTotal() << " EGP" << endl;
+}

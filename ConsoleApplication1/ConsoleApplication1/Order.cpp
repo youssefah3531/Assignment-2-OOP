@@ -5,6 +5,30 @@
 #include "CashPayment.h"
 #include "OrderItem.h"
 #include "Product.h"
+Order::Order(int id, string date, string stat, Customer* c)
+{
+    orderId = id;
+    orderDate = date;
+    status = stat;
+    customer = c;
+    payment = nullptr;
+    delivery = nullptr;
+}
+Order::~Order()
+{
+    for (auto item : items)
+        delete item;
+    delete payment;
+    delete delivery;
+}
+void Order::setPayment(Payment* p)
+{
+    payment = p;
+}
+void Order::setDelivery(Delivery* d)
+{
+    delivery = d;
+}
 int Order::getOrderId()
 {
     return orderId;
@@ -25,18 +49,12 @@ Customer* Order::getCustomer()
     return customer;
 }
 
-Payment* Order::getPayment()
-{
-    return payment;
-}
-
-Delivery* Order::getDelivery()
-{
-    return delivery;
-}
-
 void Order::addItem(Product* product, int quantity)
 {
+    if (quantity <= 0)
+        throw invalid_argument("Quantity must be positive");
+    if (quantity > product->get_quantity())
+        throw runtime_error("Insufficient stock for: " + product->get_name());
     OrderItem* item = new OrderItem();
     item->setProduct(product);
     item->setquantity(quantity);
@@ -57,7 +75,7 @@ double Order::calculateFinalTotal()
     if (delivery != nullptr)
         total += delivery->getDeliveryFee();
     if (customer != nullptr)
-        total -= customer->calculateDiscount(total);
+        total -= customer->calculateDiscount(calculateSubtotal());
     return total;
 }
 
@@ -75,14 +93,19 @@ void Order::printInvoice()
     for (OrderItem* item : items)
         item->displayItem();
     cout << "-----------------" << endl;
-    cout << "Subtotal:   " << calculateSubtotal() << " EGP" << endl;
+    double subtotal = calculateSubtotal();
+    double discount = (customer != nullptr) ? customer->calculateDiscount(subtotal) : 0;
+    double deliveryFee = (delivery != nullptr) ? delivery->getDeliveryFee() : 0;
+    cout << "Subtotal:      " << subtotal << " EGP" << endl;
+    cout << "Discount:      " << discount << " EGP" << endl;
     if (delivery != nullptr)
         cout << "Delivery:   " << delivery->getDeliveryFee() << " EGP" << endl;
     cout << "Total:      " << calculateFinalTotal() << " EGP" << endl;
-    if (payment != nullptr) {
-        cout << "Payment:    ";
+    cout << "Payment:       ";
+    if (payment != nullptr) 
         payment->pay();
-    }
+    else 
+        cout << "Not set" << endl;
     if (delivery != nullptr)
         delivery->displayDeliveryInfo();
     cout << "=============================" << endl;

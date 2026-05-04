@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 using namespace std;
 Book::Book()
 {
@@ -20,9 +21,15 @@ void Book::add_product()
 	cout << "Enter the name of the book" << endl;
 	cin >> name;
 	cout << "Enter the Price" << endl;
-	cin >> price;
+	int p;
+	cin >> p;
+	if (p < 0) throw invalid_argument("Price cannot be negative");
+	price = p;
+	int q;
 	cout << "Enter the quantity of this Item"<<endl;
-	cin >> available_quantity;
+	cin >> q;
+	if (q < 0) throw invalid_argument("Quantity cannot be negative");
+	available_quantity = q;
 	cout << "Enter the author name" << endl;
 	cin >> author;
 	cout << "Enter the number of pages" << endl;
@@ -32,6 +39,7 @@ void Book::add_product()
 void Book::display()
 {
 	cout << "----------------------" << endl;
+	cout << "Type: Book" << endl;
 	cout << "Id: " << productID<<endl;
 	cout << "Name: " << name << endl;
 	cout << "Price: " << price << endl;
@@ -59,10 +67,7 @@ int Book::operator+(Book B)
 
 bool Book::operator==(Book B)
 {
-	if (this->price == B.price)
-		return true;
-	else
-		return false;
+	return this->price == B.price;
 }
 
 ostream& operator<<(ostream& out, Book B)

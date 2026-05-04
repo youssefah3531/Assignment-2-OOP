@@ -15,10 +15,16 @@ void Store::addCustomer(Customer*c)
     customers.push_back(c);
 }
 
-void Store::addOrder(Order*)
+void Store::addOrder(Order* o)
 {
+    orders.push_back(o);
 }
 
 void Store::displayStoreSummary()
 {
+    cout << "===== Store Summary =====" << endl;
+    cout << "Total Products (types): " << Product::getProductCount() << endl;
+    cout << "Total Customers: " << customers.size() << endl;
+    cout << "Total Orders: " << orders.size() << endl;
+    cout << "=========================" << endl;
 }

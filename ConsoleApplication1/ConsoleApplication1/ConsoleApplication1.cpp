@@ -11,20 +11,34 @@
 #include "Store.h"
 #include "RegularCustomer.h"
 #include "PremiumCustomer.h"
+#include "Order.h"
+#include "Delivery.h"
+#include "Payment.h"
+#include "CardPayment.h"
+#include "CashPayment.h"
+#include "OrderItem.h"
 using namespace std;
 
 int main()
 {
-    int mainchoice;
     Store st;
     vector<Product*> products;
+    vector<Customer*> customers;
+    vector<Order*> orders;
+    int orderCounter = 1001;
     try {
         loadFromFile(products);
+        for (auto p : products)
+            st.addProduct(p);
+        if (!products.empty())
+            cout << "[File] Loaded " << products.size() << " product(s)." << endl;
     }
     catch (exception& e) {
         cout << "Error loading products: " << e.what() << endl;
     }
 
+    int choice;
+    cout << "\n===== Welcome to Smart Store =====" << endl;
     cout << "What do you want to do" << endl;
 
     do
@@ -32,33 +46,34 @@ int main()
 
         try
         {
-            cout << "1- Add Product\n2- Display product details\n3- Buy Product\n4- Find Max Price Product\n5- Swap Products\n6- Add Customer\n0- Exit" << endl;
-            if (!(cin >> mainchoice))
+            cout << "1- Add Product\n2- Display product details\n3- Buy Product\n4- Find Max Price Product\n5- Swap Products\n6- Add Customer\n7- Create Order & Print Invoice\n8- Display Total Product Count\n0- Exit" << endl;
+            if (!(cin >> choice))
                 throw runtime_error("Invalid input");
 
-            switch (mainchoice)
+            switch (choice)
             {
             case 1:
             {
-                int choice;
+                int type;
                 cout << "Which Product do you want to add" << endl;
                 cout << "1- Book\n2- Electronic Device\n3- Office Supply" << endl;
-                if (!(cin >> choice))
+                if (!(cin >> type))
                     throw runtime_error("Invalid input");
 
                 Product* p = nullptr;
 
-                if (choice == 1)
+                if (type == 1)
                     p = new Book();
-                else if (choice == 2)
+                else if (type == 2)
                     p = new Electronic_Device();
-                else if (choice == 3)
+                else if (type == 3)
                     p = new Office_Supply();
                 else
                     throw runtime_error("Invalid product type");
                 p->add_product();
                 products.push_back(p);
                 st.addProduct(p);
+                cout << "Product added successfully." << endl;
                 break;
             }
 
@@ -83,7 +98,7 @@ int main()
                     throw runtime_error("No products available");
                 for (auto p : products)
                     p->display();
-                int id, q;
+                int id, qty;
                 cout << "Enter product ID: ";
                 if (!(cin >> id))
                     throw runtime_error("Invalid ID");
@@ -91,15 +106,15 @@ int main()
                 for (auto p : products) {
                     if (p->get_id() == id) {
                         found = true;
-                        cout << "Enter quantity: ";
-                        if (!(cin >> q))
+                        cout << "Enter quantity to buy: ";
+                        if (!(cin >> qty))
                             throw runtime_error("Invalid quantity");
-                        if (q <= 0)
+                        if (qty <= 0)
                             throw runtime_error("Quantity must be positive");
-                        if (q > p->get_quantity())
+                        if (qty > p->get_quantity())
                             throw runtime_error("Not enough quantity");
-                        p->set_new_quantity(q);
-                        cout << "Purchased successfully\n";
+                        p->set_new_quantity(qty);
+                        cout << "Purchased successfully. Remaining stock: " << p->get_quantity() << endl;
                         break;
                     }
                 }
@@ -124,6 +139,10 @@ int main()
 
             case 5:
             {
+                if (products.size() < 2)
+                    throw runtime_error("Need at least 2 products to swap");
+                for (auto p : products) p->display();
+
                 int id1, id2;
                 cout << "Enter first product id: ";
                 if (!(cin >> id1))
@@ -148,62 +167,175 @@ int main()
                 swapProducts(products[index1], products[index2]);
 
                 cout << "Products swapped successfully\n";
+                for (auto p : products) p->display();
                 break;
             }
             case 6:
             {
-                int custchoice;
-                int custid;
-                string custphone;
-                string custname;
-                Store customer;
+                int type;
                 cout << "1- Regular Customer\n2-Premium Customer: " << endl;
                 do {
-                    cin >> custchoice;
-                    if (custchoice == 1)
-                    {
-                        Customer* regular = new RegularCustomer();
-                        cout << "Enter your id: " << endl;
-                        cin >> custid;
-                        regular->setCustomerId(custid);
-                        cout << "Enter your name: " << endl;
-                        cin >> custname;
-                        regular->setCustomerName(custname);
-                        cout << "Enter you Phone number: " << endl;
-                        cin >> custphone;
-                        regular->setCustomerPhone(custphone);
-                        customer.addCustomer(regular);
+                    if (!(cin >> type)) {
+                        cout << "Invalid input.\n";
+                        cin.clear(); cin.ignore(1000, '\n');
+                        continue;
                     }
-                    else if (custchoice == 2)
+                    if (type != 1 && type != 2)
+                        cout << "Please enter 1 or 2: ";
+                } while (type != 1 && type != 2);
+
+                int id; string name, phone;
+                cout << "Enter Customer ID: ";
+                cin >> id;
+                cout << "Enter Name: ";        
+                cin >> name;
+                cout << "Enter Phone: ";       
+                cin >> phone;
+
+                Customer* c = nullptr;
+                    if (type == 1)
                     {
-                        Customer* premium = new PremiumCustomer();
-                        cout << "Enter your id: " << endl;
-                        cin >> custid;
-                        premium->setCustomerId(custid);
-                        cout << "Enter your name: " << endl;
-                        cin >> custname;
-                        premium->setCustomerName(custname);
-                        cout << "Enter you Phone number: " << endl;
-                        cin >> custphone;
-                        premium->setCustomerPhone(custphone);
-                        customer.addCustomer(premium);
+                        c = new RegularCustomer();
+                        c->setCustomerId(id);
+                        c->setCustomerName(name);
+                        c->setCustomerPhone(phone);
+                        cout << "Regular customer added." << endl;
                     }
                     else
                     {
-                        cout << "Invalid Choice" << endl;
+                        double rate;
+                        cout << "Enter Discount Rate (0.0 - 1.0): "; cin >> rate;
+                        PremiumCustomer* pc = new PremiumCustomer();
+                        pc->setCustomerId(id);
+                        pc->setCustomerName(name);
+                        pc->setCustomerPhone(phone);
+                        pc->setDiscountRate(rate);
+                        c = pc;
+                        cout << "Premium customer added." << endl;
                     }
-                } while (custchoice != 1 && custchoice != 2);
+                    customers.push_back(c);
+                    st.addCustomer(c);
+                    c->displayInfo();
+                    break;
+            }
+            case 7:
+            {
+                if (products.empty())
+                    throw runtime_error("No products available to order");
+                if (customers.empty())
+                    throw runtime_error("No customers found. Please add a customer first (option 6)");
+
+                cout << "\nAvailable Customers:" << endl;
+                for (size_t i = 0; i < customers.size(); i++) {
+                    cout << i + 1 << "- ";
+                    customers[i]->displayInfo();
+                }
+                int custIdx;
+                cout << "Choose customer number: ";
+                if (!(cin >> custIdx) || custIdx < 1 || (size_t)custIdx > customers.size())
+                    throw runtime_error("Invalid customer selection");
+                Customer* cust = customers[custIdx - 1];
+
+                // Create order
+                Order* order = new Order(orderCounter++, "2026-05-04", "Confirmed", cust);
+
+                // Add items
+                for (auto p : products) p->display();
+                int more = 1;
+                while (more == 1) {
+                    int pid, qty;
+                    cout << "Enter product ID to add: ";
+                    if (!(cin >> pid)) throw runtime_error("Invalid ID");
+                    cout << "Enter quantity: ";
+                    if (!(cin >> qty)) throw runtime_error("Invalid quantity");
+
+                    bool found = false;
+                    for (auto p : products) {
+                        if (p->get_id() == pid) {
+                            found = true;
+                            try {
+                                order->addItem(p, qty);
+                                cout << "Item added." << endl;
+                            }
+                            catch (exception& e) {
+                                cout << "Error: " << e.what() << endl;
+                            }
+                            break;
+                        }
+                    }
+                    if (!found) cout << "Product not found." << endl;
+                    cout << "Add another item? 1-Yes  0-No: ";
+                    cin >> more;
+                }
+
+                // Payment
+                int payType;
+                cout << "Payment method:\n1- Cash\n2- Card\nChoice: ";
+                if (!(cin >> payType)) throw runtime_error("Invalid payment choice");
+
+                Payment* pay = nullptr;
+                if (payType == 2) {
+                    string cardNum;
+                    cout << "Enter 16-digit card number: "; 
+                    cin >> cardNum;
+                    CardPayment* cp = new CardPayment();
+                    cp->setCardNumber(cardNum);
+                    pay = cp;
+                }
+                else {
+                    pay = new CashPayment();
+                }
+                order->setPayment(pay);
+
+                // Delivery
+                int hasDelivery;
+                cout << "Delivery:\n1- Shipped (with delivery fee)\n0- Pickup (no fee)\nChoice: ";
+                cin >> hasDelivery;
+                if (hasDelivery == 1) {
+                    string addr, driver; double fee;
+                    cout << "Delivery Address: ";
+                    cin >> addr;
+                    cout << "Delivery Fee: ";    
+                    cin >> fee;
+                    cout << "Driver Name: ";     
+                    cin >> driver;
+                    try {
+                        Delivery* del = new Delivery(1, addr, fee, driver);
+                        order->setDelivery(del);
+                    }
+                    catch (exception& e) {
+                        cout << "Delivery error: " << e.what() << endl;
+                    }
+                }
+
+                order->printInvoice();
+                st.addOrder(order);
+                orders.push_back(order);
+                break;
+            }
+            case 8:
+            {
+                cout << "Total Product objects created: " << Product::getProductCount() << endl;
                 break;
             }
             case 0:
             {
-                cout << "Exiting...\n";
+                cout << "Saving data..." << endl;
+                try {
+                    saveToFile(products);
+                    cout << "Products saved successfully." << endl;
+                }
+                catch (exception& e) {
+                    cout << "Save error: " << e.what() << endl;
+                }
+                st.displayStoreSummary();
+                cout << "Goodbye!" << endl;
                 break;
             }
 
             default:
             {
-                throw runtime_error("Invalid choice");
+                throw runtime_error("Invalid choice. Please enter 0-8");
             }
             }
         }
@@ -213,17 +345,11 @@ int main()
             cin.ignore(1000, '\n');
         }
 
-    } while (mainchoice != 0);
+    } while (choice != 0);
 
 
-    try {
-        saveToFile(products);
-    }
-    catch (exception& e) {
-        cout << "Error saving products: " << e.what() << endl;
-    }
-
-    for (auto p : products)
-        delete p;
+    for (auto o : orders)   delete o;
+    for (auto c : customers) delete c;
+    for (auto p : products)  delete p;
     return 0;
 }

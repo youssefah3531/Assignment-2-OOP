@@ -15,6 +15,7 @@ public:
 	int getCustomerId();
 	string getName();
 	string getPhone();
+	virtual ~Customer() = default;
 	virtual void displayInfo() = 0;
 	virtual double calculateDiscount(double amount) = 0;
 };

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "Product.h"
 #include "Order.h"
@@ -13,5 +14,6 @@ public:
 	void setquantity(int q);
 	void setUnitPrice(double price);
 	int calculateItemTotal();
+	void displayItem();
 };
 

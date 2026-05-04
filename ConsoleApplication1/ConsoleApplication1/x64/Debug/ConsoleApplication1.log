@@ -1,158 +1,21 @@
-﻿  CardPayment.cpp
+﻿  Book.cpp
+  CardPayment.cpp
   CashPayment.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'CardPayment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
-  (compiling source file 'CardPayment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
-      see declaration of 'Payment'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(4,27): error C2504: 'Payment': base class undefined
-  (compiling source file 'CardPayment.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(10,7): error C3668: 'CardPayment::pay': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'CardPayment.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.cpp(18,6): error C3867: 'CardPayment::validateCard': non-standard syntax; use '&' to create a pointer to member
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'CashPayment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
-  (compiling source file 'CashPayment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
-      see declaration of 'Payment'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(3,27): error C2504: 'Payment': base class undefined
-  (compiling source file 'CashPayment.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(6,7): error C3668: 'CashPayment::pay': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'CashPayment.cpp')
-  
   ConsoleApplication1.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'ConsoleApplication1.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(139,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(142,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(158,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(161,34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Customer.cpp
   Delivery.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'Delivery.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7): error C2011: 'Delivery': 'class' type redefinition
-  (compiling source file 'Delivery.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(4,16): error C2027: use of undefined type 'Delivery'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(6,28): error C2065: 'deliveryId': undeclared identifier
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(7,25): error C2065: 'address': undeclared identifier
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(8,29): error C2065: 'deliveryFee': undeclared identifier
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.cpp(9,28): error C2065: 'driverName': undeclared identifier
+  Electronic_Device.cpp
+  File.cpp
+  Office_Supply.cpp
   Order.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'Order.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7): error C2011: 'Delivery': 'class' type redefinition
-  (compiling source file 'Order.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
-  (compiling source file 'Order.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
-      see declaration of 'Payment'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(4,27): error C2504: 'Payment': base class undefined
-  (compiling source file 'Order.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CardPayment.h(10,7): error C3668: 'CardPayment::pay': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Order.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(3,27): error C2504: 'Payment': base class undefined
-  (compiling source file 'Order.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\CashPayment.h(6,7): error C3668: 'CashPayment::pay': method with override specifier 'override' did not override any base class methods
-  (compiling source file 'Order.cpp')
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7): error C2011: 'OrderItem': 'class' type redefinition
-  (compiling source file 'Order.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(39,36): error C2027: use of undefined type 'OrderItem'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(47,18): error C2027: use of undefined type 'OrderItem'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(55,18): error C2027: use of undefined type 'Delivery'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(73,9): error C2027: use of undefined type 'OrderItem'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(77,35): error C2027: use of undefined type 'Delivery'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(81,9): error C2027: use of undefined type 'Payment'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
-      see declaration of 'Payment'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Order.cpp(84,9): error C2027: use of undefined type 'Delivery'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Delivery.h(5,7):
-      see declaration of 'Delivery'
-  
   OrderItem.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'OrderItem.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7): error C2011: 'OrderItem': 'class' type redefinition
-  (compiling source file 'OrderItem.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.cpp(3,16): error C2027: use of undefined type 'OrderItem'
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(5,7):
-      see declaration of 'OrderItem'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.cpp(5,9): error C2065: 'quantity': undeclared identifier
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.cpp(5,18): error C2065: 'unitPriceAtPurchase': undeclared identifier
+D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.cpp(20,17): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   Payment.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'Payment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7): error C2011: 'Payment': 'class' type redefinition
-  (compiling source file 'Payment.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\Payment.h(4,7):
-      see declaration of 'Payment'
-  
+  PremiumCustomer.cpp
+  Product.cpp
+  RegularCustomer.cpp
   Store.cpp
-D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(15,13): error C2535: 'int OrderItem::calculateItemTotal(void)': member function already defined or declared
-  (compiling source file 'Store.cpp')
-      D:\Assignment-2-OOP\ConsoleApplication1\ConsoleApplication1\OrderItem.h(12,6):
-      see declaration of 'OrderItem::calculateItemTotal'
-  
   Generating Code...
+  ConsoleApplication1.vcxproj -> D:\Assignment-2-OOP\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
