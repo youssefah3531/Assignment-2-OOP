@@ -2,7 +2,7 @@ Book
 1
 OOP
 70
-7
+6
 joe
 700
 Electronic Device

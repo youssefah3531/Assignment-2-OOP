@@ -5,10 +5,7 @@ using namespace std;
 
 void PremiumCustomer::setDiscountRate(double newRate)
 {
-    if (newRate >= 0.0 && newRate <= 1.0)
         discountRate = newRate;
-    else
-        cout << "Invalid rate! Must be between 0.0 and 1.0" << endl;
 }
 
 double PremiumCustomer::getDiscountRate()

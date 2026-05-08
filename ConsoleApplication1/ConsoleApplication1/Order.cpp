@@ -81,7 +81,7 @@ double Order::calculateFinalTotal()
 
 void Order::printInvoice()
 {
-    cout << "========== INVOICE ==========" << endl;
+    cout << "INVOICE" << endl;
     cout << "Order ID:   " << orderId << endl;
     cout << "Date:       " << orderDate << endl;
     cout << "Status:     " << status << endl;

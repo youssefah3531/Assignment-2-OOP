@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
 using namespace std;
 class Product
 {
@@ -15,7 +14,6 @@ protected:
 public:
 	Product();
 	Product(int id,string name,int price);
-	virtual ~Product() = default;
 	virtual void add_product()=0;
 	virtual void display() =0;
 	void set_id(int id);
@@ -23,7 +21,6 @@ public:
 	void set_price(int p);
 	void set_quantity(int q);
 	void set_new_quantity(int q);
-	
 	int get_id();
 	int get_price();
 	int get_quantity();

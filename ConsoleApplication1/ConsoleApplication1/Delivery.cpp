@@ -3,8 +3,6 @@
 
 Delivery::Delivery(int id, string addr, double fee, string driver)
 {
-	if (fee < 0)
-		throw invalid_argument("Delivery fee cannot be negative");
 	deliveryId = id;
 	address = addr;
 	deliveryFee = fee;

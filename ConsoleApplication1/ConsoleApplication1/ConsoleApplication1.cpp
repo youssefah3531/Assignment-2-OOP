@@ -24,7 +24,7 @@ int main()
     vector<Product*> products;
     vector<Customer*> customers;
     vector<Order*> orders;
-    int orderCounter = 1001;
+    int orderCounter = 0;
     try {
         loadFromFile(products);
         for (auto p : products)
@@ -169,8 +169,7 @@ int main()
                 }
                 else
                 {
-                    double rate;
-                    cout << "Enter Discount Rate (0.0 - 1.0): "; cin >> rate;
+                    double rate=0.3;
                     PremiumCustomer* pc = new PremiumCustomer();
                     pc->setCustomerId(id);
                     pc->setCustomerName(name);
@@ -202,7 +201,7 @@ int main()
                 if (!(cin >> custIdx) || custIdx < 1 || (size_t)custIdx > customers.size())
                     throw runtime_error("Invalid customer selection");
                 Customer* cust = customers[custIdx - 1];
-                Order* order = new Order(orderCounter++, "2026-05-04", "Confirmed", cust);
+                Order* order = new Order(++orderCounter, "2026-05-09", "Confirmed", cust);
                 for (auto p : products)
                     p->display();
                 int more = 1;
@@ -251,15 +250,11 @@ int main()
                 cout << "Delivery:\n1- Shipped (with delivery fee)\n0- Pickup (no fee)\nChoice: ";
                 cin >> hasDelivery;
                 if (hasDelivery == 1) {
-                    string addr, driver; double fee;
+                    string addr;
                     cout << "Delivery Address: ";
                     cin >> addr;
-                    cout << "Delivery Fee: ";
-                    cin >> fee;
-                    cout << "Driver Name: ";
-                    cin >> driver;
                     try {
-                        Delivery* del = new Delivery(1, addr, fee, driver);
+                        Delivery* del = new Delivery(1, addr, 50, "Omar");
                         order->setDelivery(del);
                     }
                     catch (exception& e) {
